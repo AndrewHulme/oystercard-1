@@ -8,7 +8,7 @@ describe Oystercard do
       expect(subject).to respond_to(:balance)
     end
 
-    it 'balance has 0' do
+    it 'balance is 0 on creation' do
       expect(subject.balance).to eq(0)
     end
 

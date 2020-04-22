@@ -36,37 +36,43 @@ describe Oystercard do
     end
   end
 
-  describe '#touch_in' do
-
-    it { is_expected.to respond_to(:touch_in) }
-
-    it '#touch_in sets @in_journey true' do
-      subject.touch_in
-      expect(subject.in_journey?).to be true
-    end
-
-  end
-
   describe '#in_journey?' do
-
     it { is_expected.to respond_to(:in_journey?) }
 
     it '#in_journey? returns boolean' do
       expect(subject.in_journey?).to be(true).or be(false)
     end
 
+    it 'is initially not in a journey' do
+      expect(subject).not_to be_in_journey
+    end
   end
 
-  describe '#touch_out' do
+  context 'touched_in' do
 
-    it { is_expected.to respond_to(:touch_out) }
-
-    it '#touch_out sets @in_journey false' do
-      subject.touch_in
-      subject.touch_out
-      expect(subject.in_journey?).to be false
+    before(:all) do
+      @card = Oystercard.new
+      @card.touch_in
     end
 
+    describe '#touch_in' do
+
+      it '#touch_in sets @in_journey true' do
+        expect(@card).to be_in_journey
+      end
+
+    end
+
+    describe '#touch_out' do
+
+      it { is_expected.to respond_to(:touch_out) }
+
+      it '#touch_out sets @in_journey false' do
+        @card.touch_out
+        expect(@card.in_journey?).to be false
+      end
+
+    end
   end
 
 end

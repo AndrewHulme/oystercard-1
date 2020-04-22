@@ -42,7 +42,7 @@ describe Oystercard do
 
     it '#touch_in sets @in_journey true' do
       subject.touch_in
-      expect(subject.in_journey?).to eq(true)
+      expect(subject.in_journey?).to be true
     end
 
   end
@@ -52,7 +52,7 @@ describe Oystercard do
     it { is_expected.to respond_to(:in_journey?) }
 
     it '#in_journey? returns boolean' do
-      expect(subject.in_journey?).to eq(true).or eq(false)
+      expect(subject.in_journey?).to be(true).or be(false)
     end
 
   end
@@ -64,7 +64,7 @@ describe Oystercard do
     it '#touch_out sets @in_journey false' do
       subject.touch_in
       subject.touch_out
-      expect(subject.in_journey?).to eq(false)
+      expect(subject.in_journey?).to be false
     end
 
   end

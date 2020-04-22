@@ -8,5 +8,10 @@ card.top_up(10)
 
 card.balance
 
-card.top_up(100)
-card.balance
+card.touch_in
+
+card.in_journey?
+
+card.touch_out
+
+card.in_journey?
